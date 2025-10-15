@@ -1,4 +1,4 @@
-class SquareController extends Component{
+class PlayerController extends Component{
     speed  = 100
     start() {
         // this.vertex = new Vector2(100, 100)

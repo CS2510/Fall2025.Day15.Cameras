@@ -1,4 +1,4 @@
-class TriangleController extends Component {
+class EnemyController extends Component {
     start() {
         // this.transform.position = new Vector2(0, 0)
         this.velocity = new Vector2(1, 1)

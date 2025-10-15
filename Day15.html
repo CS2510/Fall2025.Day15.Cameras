@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Day 13 Game</title>
+    <title>Day 15 Game</title>
     <style>
         *{
             margin: 0;
@@ -14,6 +14,7 @@
 
 <body>
     <canvas id="canv"></canvas>
+    
     <!-- Engine-specific Code -->
     <script src="./engine/Vector2.js"></script>
     <script src="./engine/Scene.js"></script>
@@ -23,14 +24,12 @@
     <script src="./engine/Engine.js"></script>
     <script src="./engine/Time.js"></script>
     <script src="./engine/Collisions.js"></script>
-    <script src="./engine/Camera.js"></script>
 
     <script src="./engine/components/Transform.js"></script>
     <script src="./engine/components/Polygon.js"></script>
     <script src="./engine/components/Collider.js"></script>
     <script src="./engine/components/RigidBody.js"></script>
     <script src="./engine/components/Text.js"></script>
-    <script src="./engine/components/CameraComponent.js"></script>
 
     <!-- Game-specific Code -->
     <script src="./game/scenes/MainScene.js"></script>
@@ -39,8 +38,8 @@
     <script src="./game/prefabs/PlayerGameObject.js"></script>
     <script src="./game/prefabs/LaserGameObject.js"></script>
     <script src="./game/prefabs/ScoreGameObject.js"></script>
-    <script src="./game/prefabs/StarGameObject.js"></script>
     <script src="./game/prefabs/MainControllerGameObject.js"></script>
+    <script src="./game/prefabs/StarGameObject.js"></script>
     
     <script src="./game/components/EnemyController.js"></script>
     <script src="./game/components/PlayerController.js"></script>
@@ -48,15 +47,11 @@
     <script src="./game/components/ScoreController.js"></script>
     <script src="./game/components/MainController.js"></script>
     <script src="./game/components/StarController.js"></script>
-
-    <script src="./game/GameAssets.js"></script>
-    <script src="./game/GameProperties.js"></script>
-    <script src="./game/Globals.js"></script>
     
     
     <script>
         Engine.currentScene = new MainScene()
-        Engine.start(new GameProperties())
+        Engine.start()
     </script>
 </body>
 

@@ -1,10 +1,8 @@
 class MainScene extends Scene{
     constructor(){
         super()
-        //Game-specific code
-        const camera = new Camera()
-        camera.getComponent(CameraComponent).backgroundColor = "black"
-        this.instantiate(camera)
+       
+        this.instantiate(new MainControllerGameObject())
 
         this.instantiate(new EnemyGameObject(), new Vector2(0,0))
         this.instantiate(new EnemyGameObject(), new Vector2(50, 50))
@@ -12,8 +10,7 @@ class MainScene extends Scene{
         this.instantiate(new EnemyGameObject(), new Vector2(40, 70))
         this.instantiate(new PlayerGameObject(), new Vector2(100, 300))
 
+        //UI Game Objects
         this.instantiate(new ScoreGameObject(), new Vector2(100, 30))
-
-        this.instantiate(new MainControllerGameObject(), new Vector2(100, 30))
     }
 }
