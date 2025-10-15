@@ -1,6 +1,10 @@
 class MainScene extends Scene{
     constructor(){
         super()
+
+        const cameraGameObject = new CameraGameObject()
+        cameraGameObject.getComponent(Camera).backgroundColor = "black"
+        this.instantiate(cameraGameObject)
        
         this.instantiate(new MainControllerGameObject())
 

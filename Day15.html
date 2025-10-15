@@ -24,12 +24,14 @@
     <script src="./engine/Engine.js"></script>
     <script src="./engine/Time.js"></script>
     <script src="./engine/Collisions.js"></script>
+    <script src="./engine/CameraGameObject.js"></script>
 
     <script src="./engine/components/Transform.js"></script>
     <script src="./engine/components/Polygon.js"></script>
     <script src="./engine/components/Collider.js"></script>
     <script src="./engine/components/RigidBody.js"></script>
     <script src="./engine/components/Text.js"></script>
+    <script src="./engine/components/Camera.js"></script>
 
     <!-- Game-specific Code -->
     <script src="./game/scenes/MainScene.js"></script>
@@ -47,11 +49,13 @@
     <script src="./game/components/ScoreController.js"></script>
     <script src="./game/components/MainController.js"></script>
     <script src="./game/components/StarController.js"></script>
+
+    <script src="./game/GameProperties.js"></script>
     
     
     <script>
         Engine.currentScene = new MainScene()
-        Engine.start()
+        Engine.start(new GameProperties())
     </script>
 </body>
 

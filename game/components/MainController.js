@@ -2,7 +2,7 @@ class MainController extends Component{
   wave = 0
   start(){
     //Create a star field
-    console.log("Hi")
+    // console.log("Hi")
     for(let i = 0; i < 100; i++){
       Engine.currentScene.instantiate(new StarGameObject(), new Vector2((Math.random()*2-1)*1500, (Math.random()*2-1)*1000))
     }

@@ -9,7 +9,9 @@ class GameObject {
     hasStarted = false
     markForDelete = false
     name = "[NO NAME]"
-    constructor(name) {
+    layer = ""
+    constructor(name, options) {
+        Object.assign(this, options)
         this.addComponent(new Transform())
         this.name = name
     }

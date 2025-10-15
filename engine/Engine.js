@@ -1,6 +1,8 @@
 class Engine {
+    static layers = ["", "UI"]
     //Engine-specific
-    static start() {
+    static start(gameProperties) {
+        Engine.layers.push(...gameProperties.layers)
         Engine.canvas = document.querySelector("#canv")
         Engine.ctx = Engine.canvas.getContext("2d")
 
@@ -37,7 +39,7 @@ class Engine {
         Engine.canvas.height = window.innerHeight
 
         //Game-specific
-        Engine.ctx.fillStyle = "black"
+        Engine.ctx.fillStyle = Camera.main.getComponent(Camera).backgroundColor
         Engine.ctx.beginPath()
         Engine.ctx.rect(0, 0, Engine.canvas.width, Engine.canvas.height)
         Engine.ctx.fill()

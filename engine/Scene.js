@@ -12,7 +12,7 @@ class Scene {
         }
     }
     update() {
-        
+
         //Update everything
         for (const gameObject of this.gameObjects) {
             //Start if the gameObject hasn't started yet
@@ -24,33 +24,33 @@ class Scene {
         }
 
         //Do Collision Detection
-        const gameObjectsWithColliders = this.gameObjects.filter(go=>go.getComponent(Collider))
-        for(let i = 0; i < gameObjectsWithColliders.length; i++){
-            for(let j = i+1; j < gameObjectsWithColliders.length; j++){
+        const gameObjectsWithColliders = this.gameObjects.filter(go => go.getComponent(Collider))
+        for (let i = 0; i < gameObjectsWithColliders.length; i++) {
+            for (let j = i + 1; j < gameObjectsWithColliders.length; j++) {
                 let a = gameObjectsWithColliders[i]
                 let b = gameObjectsWithColliders[j]
-                let response = Collisions.inCollision(a,b)
-                if(response){
+                let response = Collisions.inCollision(a, b)
+                if (response) {
 
                     const aHasRigidBody = a.getComponent(RigidBody)
                     const bHasRigidBody = b.getComponent(RigidBody)
-                    if(aHasRigidBody){
-                        if(a.transform.position.minus(b.transform.position).dot(response) < 0)
+                    if (aHasRigidBody) {
+                        if (a.transform.position.minus(b.transform.position).dot(response) < 0)
                             response = response.times(-1)
                         a.transform.position.plusEquals(response)
                     }
-                    if(bHasRigidBody){
-                        if(b.transform.position.minus(a.transform.position).dot(response) < 0)
+                    if (bHasRigidBody) {
+                        if (b.transform.position.minus(a.transform.position).dot(response) < 0)
                             response = response.times(-1)
                         b.transform.position.plusEquals(response)
                     }
 
 
 
-                    for(const component of a.components){
+                    for (const component of a.components) {
                         component.onCollisionEnter?.(b)
                     }
-                    for(const component of b.components){
+                    for (const component of b.components) {
                         component.onCollisionEnter?.(a)
                     }
                 }
@@ -61,7 +61,27 @@ class Scene {
         this.gameObjects = this.gameObjects.filter(go => !go.markForDelete)
     }
     draw(ctx) {
-        for (const gameObject of this.gameObjects) {
+
+
+        ctx.save()
+
+        ctx.translate(window.innerWidth / 2, window.innerHeight / 2)
+
+        ctx.translate(-Camera.main.transform.position.x, -Camera.main.transform.position.y)
+
+        for (const layer of Engine.layers.filter(l => l != "UI")) {
+            const gameObjects = this.gameObjects.filter(go => go.layer == layer)
+            for (const gameObject of gameObjects) {
+                gameObject.draw(ctx)
+            }
+        }
+
+
+
+        ctx.restore()
+
+        const gameObjects = this.gameObjects.filter(go => go.layer == "UI")
+        for (const gameObject of gameObjects) {
             gameObject.draw(ctx)
         }
     }

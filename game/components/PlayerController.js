@@ -28,6 +28,8 @@ class PlayerController extends Component {
 
         this.transform.position.plusEquals(proposedChange.times(Time.deltaTime * this.speed))
 
+        Camera.main.transform.position = this.transform.position.clone()
+
         if (this.transform.position.x > this.boundsX) this.transform.position.x = this.boundsX
         if (this.transform.position.x < -this.boundsX) this.transform.position.x = -this.boundsX
         if (this.transform.position.y < -this.boundsY) this.transform.position.y = -this.boundsY
